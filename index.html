@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Welcome Celebration</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        position: relative; /* Ensure z-index works */
+        font-family: "Arial", sans-serif;
+      }
+      
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url("your-background-image.jpg"); /* Set the path to your background image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1; /* Set a negative z-index to place it behind the content */
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ff3434; /* Red confetti color */
+        border-radius: 50%;
+        transform-origin: 50% 50%;
+        animation: confettiAnimation 1s ease-out infinite;
+        z-index: 1; /* Ensure confetti appears above the background */
+      }
+
+      @keyframes confettiAnimation {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .welcome-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: #000; /* Black text color */
+        animation: bounceAndFade 7s ease-out infinite;
+      }
+
+      @keyframes bounceAndFade {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-20px);
+        }
+        60% {
+          transform: translateY(-10px);
+        }
+        90% {
+          opacity: 0;
+        }
+      }
+
+      .center-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 100vh;
+      }
+
+      .floating-image {
+        animation: floatAnimation 2s ease-in-out;
+      }
+
+      @keyframes floatAnimation {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .corner-container {
+        position: fixed;
+        width: 50px; /* Set the width of corner containers */
+        height: 50px; /* Set the height of corner containers */
+      }
+
+      .corner-image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .top-left {
+        top: 0;
+        left: 0;
+        animation: moveBackAndForthLeft 2s ease-in-out infinite;
+      }
+
+      @keyframes moveBackAndForthLeft {
+        0%,
+        100% {
+          top: 0;
+          left: 0;
+        }
+        50% {
+          top: calc(5% - 5px);
+        }
+      }
+
+      .top-right {
+        top: 0px;
+        right: 150px;
+        position: absolute;
+        animation: moveBackAndForthRight 2s ease-in-out infinite;
+      }
+
+      @keyframes moveBackAndForthRight {
+        0%,
+        100% {
+          top: 0;
+          right: 150px;
+        }
+        50% {
+          top: calc(5% - 5px);
+        }
+      }
+
+      .bottom-left {
+        bottom: 150px;
+        left: 0;
+      }
+
+      .bottom-right {
+        bottom: 150px;
+        right: 150px;
+      }
+
+      .message-container {
+        position: absolute;
+        bottom: 80px; /* Adjust the distance of the message from the centered image */
+        text-align: center;
+        font-size: 20px;
+        color: #333; /* Set the color of the message text */
+        font-family: cursive;
+      }
+      .feature {
+        position: absolute;
+        bottom: 20px; /* Adjust the distance of the message from the centered image */
+        text-align: center;
+        font-size: 10px;
+        color: #333; /* Set the color of the message text */
+        font-family: cursive;
+      }
+
+      @media only screen and (max-width: 770px) {
+        .bottom-left {
+        top: 0px;
+        left: 0;
+      }
+
+      .bottom-right {
+        top: 0px;
+        right: 50px;
+      }
+
+      .image-small{
+        width: 100px !important;
+        height: 100px !important;
+      }
+      .col-md-3{
+        flex: 0 0 25%;
+    max-width: 25%;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid slide1">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="welcome-message" id="welcomeMessage">
+            Welcome 5th January 2024!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide2">
+      <div class="corner-container top-left">
+        <img
+          src="Assets/top-left.png"
+          class="corner-image"
+          alt="Top Left Image"
+        />
+      </div>
+
+      <!-- Top Right Corner -->
+      <div class="corner-container top-right">
+        <img
+          src="Assets/top-right.png"
+          class="corner-image"
+          alt="Top Right Image"
+        />
+      </div>
+
+      <!-- Center Screen with Message -->
+      <div class="container-fluid center-screen">
+        <img
+          src="a.png"
+          class="img-fluid floating-image"
+          alt="Floating Image"
+        />
+        <div class="feature">
+            <div class="col-12">
+                <div class="row">
+                <div class="col-md-4"><a target="_blank" href="message.html"><img
+                    src="Assets/chat.png"
+                    class=""
+                    style="width:40px"
+                  /></a></div>
+                <div class="col-md-4">
+                  <a href="video.html" target="_blank">
+                  <img
+                    src="Assets/video.png"
+                    class=""
+                    style="width:40px"
+                  />
+                </a>
+                </div>
+                <div class="col-md-4"><a href="https://bit.ly/certificate-arie" target="_blank">
+                  <img
+                    src="Assets/certificate.png"
+                    class=""
+                    style="width:40px"
+                  />
+                </a></div>
+            </div>
+        </div>
+        </div>
+        <div class="message-container">stay awesome and gorgeous</div>
+      </div>
+
+      <!-- Bottom Left Corner -->
+      <div class="corner-container bottom-left">
+        <img 
+          src="Assets/gif1.gif"
+          class="corner-image image-small"
+          alt="Bottom Left Image"
+        />
+      </div>
+
+      <!-- Bottom Right Corner -->
+      <div class="corner-container bottom-right">
+        <img
+          src="Assets/gif2.gif"
+          class="corner-image image-small"
+          alt="Bottom Right Image"
+        />
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap JS and Popper.js CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- ... (your HTML code) ... -->
+
+    <script>
+      $(document).ready(function () {
+        $('.slide2').hide();
+        var welcomeStartTime = new Date().getTime();
+
+        // Function to create welcome confetti
+        function createWelcomeConfetti() {
+          var currentTime = new Date().getTime();
+          var duration = currentTime - welcomeStartTime;
+
+          // Create a confetti element
+          var confetti = $('<div class="confetti"></div>');
+
+          // Set initial position
+          var initialX = Math.random() * window.innerWidth;
+          var initialRotation = Math.random() * 360;
+
+          confetti.css({
+            left: initialX + "px",
+            transform: "rotate(" + initialRotation + "deg)",
+          });
+
+          // Append confetti to the body
+          $("body").append(confetti);
+
+          // Remove confetti after animation completes
+          confetti.on("animationend", function () {
+            $(this).remove();
+          });
+        }
+
+        // Generate welcome confetti at intervals during the welcome message duration
+        var confettiInterval = setInterval(createWelcomeConfetti, 500);
+
+        // Remove welcome message and stop confetti generation after 6 seconds
+        setTimeout(function () {
+          $("#welcomeMessage").remove();
+          $('.slide2').show();
+          clearInterval(confettiInterval);
+        }, 6000);
+      });
+    </script>
+  </body>
+</html>
